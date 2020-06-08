@@ -1,0 +1,155 @@
+﻿@model WebTraSua_16.Models.SanPhamOD
+@{
+    ViewBag.Title = "SanPhamOD";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var spLienQuan = (List<WebTraSua_16.Models.SanPhamOD>)ViewBag.SPLienQuan;
+}
+
+<div class="container">
+    <div class="single">
+        <div class="col-md-9 top-in-single">
+            <div class="col-md-5 single-top">
+                <ul id="etalage">
+                    <li>
+                        <a href="optionallink.html">
+                            <img class="etalage_thumb_image img-responsive" src="/Content/images/@Model.LinkAnh" alt="">
+
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+            </div>
+            <div class="col-md-7 single-top-in">
+                <div class="single-para">
+                    <h4>@Model.TenOD</h4>
+                    <p></p>
+                    <div class="star">
+                        <ul>
+                            <li><i> </i></li>
+                            <li><i> </i></li>
+                            <li><i> </i></li>
+                            <li><i> </i></li>
+                            <li><i> </i></li>
+                        </ul>
+                        <div class="review">
+                            <a href="#"> Xem phản hồi </a>/
+                            <a href="contact.html">  Viết phản hồi</a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+
+                    <label class="add-to">@Model.DonGia VND</label>
+                    @using (Html.BeginForm("AddItem", "Cart", new {id=Model.MaOD ,returnURL = Request.Url.AbsoluteUri }))
+                    {
+                        <div class="available">
+                            <ul>
+                                <li>
+                                    Size:<select name="idSanPham" id="idSanPham">
+                                        <option>M</option>
+                                        <option>L</option>
+
+                                    </select>
+                                </li>
+                            </ul>
+                            <br>
+                            <ul>
+                                <li>
+                                    Đá:
+                                    <select name="da" id="da">
+                                        <option>100%</option>
+                                        <option>75%</option>
+                                        <option>50%</option>
+                                        <option>25%</option>
+                                    </select>
+                                </li>
+                            </ul>
+                            <br>
+                            <ul>
+                                <li>
+                                    Đường:
+                                    <select name="duong" id="duong">
+                                        <option value="100">100%</option>
+                                        <option value="75">75%</option>
+                                        <option value="50">50%</option>
+                                        <option value="25">25%</option>
+                                    </select>
+                                </li>
+                            </ul>
+                            @*<label for="quantity">Số lượng: </label>
+                            <input type="number" id="txtQuantity" name="txtQuantity" min="1" max="20" />*@
+                        </div>
+
+                                                            
+          
+                        @*<a href="#" class="cart ">Thêm vào giỏ hàng</a>*@
+                        @*<div class="button"><span><a href="/Cart/AddItem/@Model.MaOD?returnURL=@Request.RawUrl">Add to Cart</a></span></div>*@
+                <button type="submit" class="btn btn-fefault cart">
+                    <i class="fa fa-shopping-cart"></i>
+                    @*<a href="/Cart/AddItem/@Model.MaOD?returnURL=@Request.RawUrl">Thêm vào giỏ</a>*@
+                    @*<a href="">Thêm vào giỏ</a>*@
+                </button>
+                    }
+
+
+                </div>
+            </div>
+            <div class="clearfix"> </div><br /><br /><br />
+            <h2>Các sản phẩm khác</h2>
+
+            @{Html.RenderAction("ListSanPham", "SanPham");}
+        </div>
+        <div class="col-md-3">
+            <div class="single-bottom">
+                <h4>Sản phẩm tương tự</h4>
+                @foreach (var it in spLienQuan)
+                {
+                    <div class="product-go">
+                        <img class="img-responsive fashion" src="/Content/images/@it.LinkAnh" alt="">
+                        <div class="grid-product">
+                            <a href="#" class="elit">@it.TenOD</a>
+                            <span class=" price-in">@it.DonGia</span>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                }
+
+
+            </div>
+            <div class="single-bottom">
+                <h4>Mô tả</h4>
+                <ul>
+                    <li>
+
+                        <label for="brand"><span></span> Thơm vị sữa</label>
+                    </li>
+                    <li>
+
+                        <label for="brand1"><span></span> Thanh mát vị trà</label>
+                    </li>
+                  
+                </ul>
+            </div>
+            <div class="single-bottom">
+                <h4>Nhận xét từ khách hàng</h4>
+                <ul>
+                    <li>
+
+                        <label for="color"><span></span> 1. Rất ngon!!</label>
+                    </li>
+                    <li>
+
+                        <label for="color1"><span></span> 2. Sản phẩm tốt, chất lượng phục vụ tuyệt vời</label>
+                    </li>
+                
+
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+

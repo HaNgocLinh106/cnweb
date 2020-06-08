@@ -1,0 +1,38 @@
+﻿@model List<WebTraSua_16.Models.SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+   
+}
+
+    <div class="product-grids">
+        <div class="container">
+            <div class="product-top">
+                @foreach (var it in Model)
+                {
+
+                    var url = "/chi-tiet-san-pham/" + it.MetaTitle + "-" + it.MaSanPham;
+                    <div class="col-md-4 grid-product-in">
+
+
+                        <div class=" product-grid">
+                            <a href="@url"><img class="img-responsive " src="/Content/images/@it.LinkAnh" alt=""></a>
+                            <div class="shoe-in">
+                                <h6><a href="@url">@it.TenSanPham </a></h6>
+                                <label>@it.DonGia VND</label>
+                                <a href="@url" class="store">ĐẶT HÀNG</a>
+                            </div>
+
+                            <b class="plus-on">+</b>
+                        </div>
+
+
+                    </div>
+                }
+
+                <div class="clearfix"> </div>
+            </div>
+          
+        </div>
+    </div>
+
